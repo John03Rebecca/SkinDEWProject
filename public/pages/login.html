@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkinDEW – Sign In</title>
+  <!-- reuse homepage styles -->
+  <link rel="stylesheet" href="/CSS/index.css" />
+  <!-- login-specific styling -->
+  <link rel="stylesheet" href="/CSS/login.css" />
+</head>
+<body>
+  <!-- Top Navigation (same as index) -->
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <a href="/pages/index.html" class="brand">SkinDEW</a>
+      <nav class="top-nav-links">
+        <a href="/pages/index.html" class="top-link">Skincare</a>
+        <a href="/pages/index.html" class="top-link">Body Care</a>
+        <a href="/pages/index.html" class="top-link">Treatments</a>
+        <a href="/pages/index.html" class="top-link">Best Sellers</a>
+      </nav>
+    </div>
+
+    <div class="top-nav-right">
+      <div class="search-box">
+        <input type="text" placeholder="Search products..." />
+      </div>
+      <!-- we’re already on login page, so no login button here -->
+    </div>
+  </header>
+
+  <main class="auth-layout">
+    <!-- LEFT: sign in form -->
+    <section class="auth-signin">
+      <h1 class="auth-title">Sign in to your account</h1>
+      <p class="auth-subtitle">
+        First time visiting? You might need to create an account.
+      </p>
+      <!-- NEW: login mode toggle -->
+<div class="login-mode">
+  <button type="button" id="mode-user" class="mode-btn active">Customer sign-in</button>
+  <button type="button" id="mode-admin" class="mode-btn">Admin sign-in</button>
+</div>
+
+
+      <form id="login-form" class="auth-form">
+        <label class="auth-label">
+          Email
+          <input type="email" id="login-email" required />
+        </label>
+
+        <label class="auth-label">
+          Password
+          <input type="password" id="login-password" required />
+        </label>
+
+        <div class="auth-row">
+          <label class="auth-checkbox">
+            <input type="checkbox" id="keep-logged-in" />
+            <span>Keep me logged in</span>
+          </label>
+
+          <button type="button" class="auth-link" id="reset-password-btn">
+            Reset password
+          </button>
+        </div>
+
+        <button type="submit" class="auth-submit">Sign In</button>
+
+        <p id="login-error" class="auth-error" aria-live="polite"></p>
+      </form>
+
+      <p class="auth-terms">
+        By signing in, you agree to our Terms of Use and acknowledge our
+        Privacy Policy.
+      </p>
+    </section>
+
+    <!-- RIGHT: benefits + create account -->
+    <section class="auth-benefits">
+      <h2 class="benefits-title">Discover the benefits of membership</h2>
+      <p class="benefits-subtitle">One account. Endless possibilities.</p>
+
+      <div class="benefits-image-wrapper">
+        <img src="/images/login-banner.jpg" alt="Serums and skincare bottles" />
+      </div>
+
+      <ul class="benefits-list">
+        <li>Get personalized product recommendations.</li>
+        <li>Track orders and view your purchase history.</li>
+        <li>Save your shipping and billing information.</li>
+      </ul>
+
+      <button class="auth-submit secondary" id="create-account-btn">
+        Create Account
+      </button>
+    </section>
+  </main>
+
+  <script src="/JS/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkinDEW – My Account</title>
+
+  <link rel="stylesheet" href="/CSS/index.css" />
+  <link rel="stylesheet" href="/CSS/profile.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR TOP -->
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <a href="/pages/index.html" class="brand">SkinDEW</a>
+      <nav class="top-nav-links">
+        <a href="/pages/index.html" class="top-link">Skincare</a>
+        <a href="/pages/index.html" class="top-link">Body Care</a>
+        <a href="/pages/index.html" class="top-link">Treatments</a>
+        <a href="/pages/index.html" class="top-link">Best Sellers</a>
+      </nav>
+    </div>
+
+    <div class="top-nav-right">
+      <div class="search-box">
+        <input type="text" placeholder="Search products..." />
+      </div>
+        <!-- ADMIN ONLY BUTTON (hidden by default) -->
+      <button id="admin-dashboard-btn" class="hero-btn" style="display:none;">
+  Admin Dashboard
+</button>
+
+
+      <!-- Profile icon only (user is already logged in) -->
+      <button class="profile-icon-only">
+        <img src="/images/profile-icon.jpg" class="profile-icon-img" />
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <main class="profile-layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="profile-sidebar">
+      <button class="sidebar-link active" data-section="settings">Account Settings</button>
+      <button class="sidebar-link" data-section="orders">Order History</button>
+      <button class="sidebar-link logout-btn" id="logout-btn">Sign Out</button>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <section class="profile-main">
+
+      <h1 id="profile-greeting" class="profile-greeting">Hello, User</h1>
+
+      <!-- ACCOUNT SETTINGS PANEL -->
+      <div class="profile-panel" id="panel-settings">
+
+        <!-- PROFILE BASIC INFO -->
+        <div class="profile-box">
+          <h2 class="box-title">Profile</h2>
+          
+          <div class="profile-info-row">
+            <div>
+              <div class="label">Full Name</div>
+              <div id="user-fullname" class="value"></div>
+            </div>
+
+            <!-- ✅ FIXED -->
+            <button class="edit-btn" data-edit="name">Edit</button>
+          </div>
+          
+
+          <div class="profile-info-row">
+            <div>
+              <div class="label">Email</div>
+              <div id="user-email" class="value"></div>
+            </div>
+          </div>
+
+          <div class="profile-info-row">
+            <div>
+              <div class="label">Password</div>
+              <div class="value">********</div>
+            </div>
+
+            <!-- ✅ FIXED -->
+            <button class="edit-btn" data-edit="password">Edit</button>
+          </div>
+        </div>
+        <!-- ADDRESS BOOK -->
+<div class="profile-box">
+  <h2 class="box-title">Address Book</h2>
+  <div id="address-section"></div>
+</div>
+
+<!-- PAYMENT METHOD -->
+<div class="profile-box">
+  <h2 class="box-title">Payment Method</h2>
+  <div id="payment-section"></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDER HISTORY PANEL -->
+      <div class="profile-panel hidden" id="panel-orders">
+        <h2 class="box-title">Order History</h2>
+        <div id="order-history"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="/JS/profile.js"></script>
+</body>
+</html>

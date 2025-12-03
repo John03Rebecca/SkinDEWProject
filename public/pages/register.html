@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkinDEW – Create Account</title>
+  <!-- Reuse global + nav styles -->
+  <link rel="stylesheet" href="/CSS/index.css" />
+  <!-- Register-specific styles -->
+  <link rel="stylesheet" href="/CSS/register.css" />
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <a href="/pages/index.html" class="brand">SkinDEW</a>
+      <nav class="top-nav-links">
+        <a href="/pages/index.html" class="top-link">Skincare</a>
+        <a href="/pages/index.html" class="top-link">Body Care</a>
+        <a href="/pages/index.html" class="top-link">Treatments</a>
+        <a href="/pages/index.html" class="top-link">Best Sellers</a>
+      </nav>
+    </div>
+
+    <div class="top-nav-right">
+      <div class="search-box">
+        <input type="text" placeholder="Search products..." />
+      </div>
+    </div>
+  </header>
+
+  <main class="register-layout">
+    <section class="register-card">
+      <h1 class="register-title">Create Account</h1>
+      <p class="register-subtitle">
+        Already have an account?
+        <a href="/pages/login.html" class="register-link">Sign in</a>
+      </p>
+
+      <form id="register-form" class="register-form">
+        <label class="register-label">
+          First name
+          <input type="text" id="reg-first-name" required />
+        </label>
+
+        <label class="register-label">
+          Last name
+          <input type="text" id="reg-last-name" required />
+        </label>
+
+        <label class="register-label">
+          Email
+          <input type="email" id="reg-email" required />
+        </label>
+
+        <label class="register-label">
+          Confirm email
+          <input type="email" id="reg-email-confirm" required />
+        </label>
+
+        <label class="register-label">
+          Password
+          <input type="password" id="reg-password" required />
+        </label>
+
+        <label class="register-label">
+          Confirm password
+          <input type="password" id="reg-password-confirm" required />
+        </label>
+
+        <p id="register-error" class="register-error" aria-live="polite"></p>
+
+        <button type="submit" class="register-submit">Join Now</button>
+
+        <p class="register-terms">
+          By clicking “Join Now” you agree to our Terms of Use and Privacy Policy.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <script src="/JS/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkinDEW – Skincare Store</title>
+  <link rel="stylesheet" href="/CSS/index.css" />
+  <link rel="stylesheet" href="/CSS/cart.css" />
+
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <a href="/pages/index.html" class="brand">SkinDEW</a>
+      <nav class="top-nav-links">
+        <a href="#" class="top-link active">Skincare</a>
+        <a href="#" class="top-link">Body Care</a>
+        <a href="#" class="top-link">Treatments</a>
+        <a href="#" class="top-link">Best Sellers</a>
+      </nav>
+    </div>
+
+    <div class="top-nav-right">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search products..." />
+      </div>
+
+     <!-- visible when NOT logged in -->
+<button class="profile-btn" id="login-btn">
+  <img src="/images/profile-icon.jpg" class="profile-icon-img">
+  <span>Login</span>
+</button>
+
+<!-- visible when logged IN -->
+<button class="profile-icon-only" id="profile-btn" style="display:none;">
+  <img src="/images/profile-icon.jpg" class="profile-icon-img">
+</button>
+
+    </div>
+  </header>
+
+  <!-- Hero banner -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Dewy, Healthy Skin Starts Here</h1>
+      <p>
+        Curated skincare essentials from trusted brands like The Ordinary, Paula's Choice,
+        CeraVe, and more.
+      </p>
+      <button class="hero-btn" id="hero-shop-btn">Shop Skincare</button>
+    </div>
+
+    <div class="hero-image">
+      <img src="/images/hero-banner.jpg" class="hero-image-real" alt="SkinDEW Banner">
+    </div>
+  </section>
+
+  <!-- Category tabs (dynamic) -->
+  <section class="category-tabs-section">
+    <div id="category-tabs" class="category-tabs">
+      <!-- JS will inject: All | Cleanser | Toner | Serum | ... -->
+    </div>
+    <div class="results-count" id="results-count">
+      <!-- "16 results" -->
+    </div>
+  </section>
+
+  <!-- Filters + Sort row -->
+  <section class="filters-row">
+    <div class="filters-left">
+      <label>
+        Brand
+        <select id="filter-brand">
+          <option value="">All Brands</option>
+          <!-- JS fills unique brands -->
+        </select>
+      </label>
+
+      <label>
+        Category
+        <select id="filter-category">
+          <option value="">All Categories</option>
+          <!-- JS fills unique categories -->
+        </select>
+      </label>
+    </div>
+
+    <div class="filters-right">
+      <label>
+        Sort By
+        <select id="sort-by">
+          <option value="">Recommended</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Name: A–Z</option>
+          <option value="name-desc">Name: Z–A</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <!-- Product grid -->
+  <main class="product-grid-section">
+    <div id="product-grid" class="product-grid">
+      <!-- JS renders cards here -->
+    </div>
+  </main>
+  <!-- MINI CART POPUP -->
+<div id="mini-cart-overlay" class="mini-cart-overlay hidden"></div>
+
+<div id="mini-cart" class="mini-cart hidden">
+  <div class="mini-cart-header">
+    <h2>Item Added to Cart</h2>
+    <button id="mini-cart-close">×</button>
+  </div>
+
+  <div id="mini-cart-items" class="mini-cart-items">
+    <!-- JS fills the items -->
+  </div>
+
+  <div class="mini-cart-footer">
+    <button id="mini-cart-view" class="mini-cart-btn primary">View Cart</button>
+    <button id="mini-cart-continue" class="mini-cart-btn">Continue Shopping</button>
+  </div>
+</div>
+
+
+  <script src="/JS/index.js"></script>
+</body>
+</html>

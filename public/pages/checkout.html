@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkinDEW – Checkout</title>
+  <link rel="stylesheet" href="/CSS/index.css" />
+  <link rel="stylesheet" href="/CSS/checkout.css" />
+</head>
+<body>
+  <!-- Top Navigation (same as index) -->
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <a href="/pages/index.html" class="brand">SkinDEW</a>
+      <nav class="top-nav-links">
+        <a href="/pages/index.html" class="top-link active">Skincare</a>
+        <a href="/pages/index.html" class="top-link">Body Care</a>
+        <a href="/pages/index.html" class="top-link">Treatments</a>
+        <a href="/pages/index.html" class="top-link">Best Sellers</a>
+      </nav>
+    </div>
+
+    <div class="top-nav-right">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search products..." />
+      </div>
+
+      <!-- visible when NOT logged in -->
+      <button class="profile-btn" id="login-btn">
+        <img src="/images/profile-icon.jpg" class="profile-icon-img" alt="">
+        <span>Login</span>
+      </button>
+
+      <!-- visible when logged IN -->
+      <button class="profile-icon-only" id="profile-btn" style="display:none;">
+        <img src="/images/profile-icon.jpg" class="profile-icon-img" alt="">
+      </button>
+    </div>
+  </header>
+
+  <!-- Checkout layout -->
+  <main class="checkout-layout">
+    <!-- Left: forms -->
+    <section class="checkout-main">
+      <h1>Checkout</h1>
+
+      <form id="checkout-form">
+        <!-- 01 Shipping -->
+        <section class="checkout-section">
+          <h2>01. Shipping</h2>
+
+          <div class="form-row two-col">
+            <label>
+              First Name
+              <input type="text" id="ship-firstName" required />
+            </label>
+            <label>
+              Last Name
+              <input type="text" id="ship-lastName" required />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Address Line 1
+              <input type="text" id="ship-address1" required />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Address Line 2 (optional)
+              <input type="text" id="ship-address2" />
+            </label>
+          </div>
+
+          <div class="form-row two-col">
+            <label>
+              City
+              <input type="text" id="ship-city" required />
+            </label>
+            <label>
+              Province / State
+              <input type="text" id="ship-province" required />
+            </label>
+          </div>
+
+          <div class="form-row two-col">
+            <label>
+              Country
+              <input type="text" id="ship-country" value="Canada" required />
+            </label>
+            <label>
+              Postal Code
+              <input type="text" id="ship-postal" required />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Phone Number
+              <input type="tel" id="ship-phone" required />
+            </label>
+          </div>
+        </section>
+
+        <!-- 02 Payment -->
+        <section class="checkout-section">
+          <h2>02. Payment</h2>
+
+          <div class="form-row">
+            <label>
+              Name on Card
+              <input type="text" id="pay-name" required />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Card Number
+              <input type="text" id="pay-card" maxlength="19" required />
+            </label>
+          </div>
+
+          <div class="form-row two-col">
+            <label>
+              Expiry (MM/YY)
+              <input type="text" id="pay-expiry" placeholder="MM/YY" required />
+            </label>
+            <label>
+              CVV
+              <input type="password" id="pay-cvv" maxlength="4" required />
+            </label>
+          </div>
+        </section>
+
+        <!-- 03 Review & Place -->
+        <section class="checkout-section">
+          <h2>03. Review & Place Order</h2>
+          <p class="checkout-note">
+            By placing your order you agree to our store policies. Payment will be
+            authorised using a dummy algorithm (no real card is charged).
+          </p>
+          <button type="submit" class="place-order-btn">
+            Place Order
+          </button>
+        </section>
+      </form>
+    </section>
+
+    <!-- Right: order summary -->
+    <aside class="order-summary">
+      <h2>Order Summary</h2>
+
+      <div id="summary-items" class="summary-items">
+        <!-- JS: line items -->
+      </div>
+
+      <div class="summary-row">
+        <span>Merchandise Subtotal</span>
+        <span id="summary-subtotal">$0.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Shipping &amp; Handling</span>
+        <span>FREE</span>
+      </div>
+      <div class="summary-row total">
+        <span>Estimated Total</span>
+        <span id="summary-total">$0.00</span>
+      </div>
+    </aside>
+  </main>
+
+  <script src="/JS/checkout.js"></script>
+</body>
+</html>

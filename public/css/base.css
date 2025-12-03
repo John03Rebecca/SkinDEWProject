@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #f2f2f2;
+  color: #222;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Navbar */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #174d38;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.nav-links a:hover {
+  color: #174d38;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d0d0d0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.nav-search input {
+  border: none;
+  padding: 0.35rem 0.75rem;
+  outline: none;
+  min-width: 200px;
+}
+
+.nav-search button {
+  border: none;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  background-color: #174d38;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.nav-btn {
+  border: 1px solid #174d38;
+  background-color: #ffffff;
+  color: #174d38;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background-color: #174d38;
+  color: #ffffff;
+}
+
+.profile-icon {
+  border-radius: 50%;
+  border: 1px solid #174d38;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkinDEW – Cart</title>
+  <link rel="stylesheet" href="/CSS/index.css" />
+  <link rel="stylesheet" href="/CSS/cart.css" />
+</head>
+<body>
+  <!-- Top Navigation (same as index) -->
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <a href="/pages/index.html" class="brand">SkinDEW</a>
+      <nav class="top-nav-links">
+        <a href="/pages/index.html" class="top-link active">Skincare</a>
+        <a href="#" class="top-link">Body Care</a>
+        <a href="#" class="top-link">Treatments</a>
+        <a href="#" class="top-link">Best Sellers</a>
+      </nav>
+    </div>
+
+    <div class="top-nav-right">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search products..." />
+      </div>
+
+      <!-- visible when NOT logged in -->
+      <button class="profile-btn" id="login-btn">
+        <img src="/images/profile-icon.jpg" class="profile-icon-img" />
+        <span>Login</span>
+      </button>
+
+      <!-- visible when logged IN -->
+      <button class="profile-icon-only" id="profile-btn" style="display:none;">
+        <img src="/images/profile-icon.jpg" class="profile-icon-img" />
+      </button>
+    </div>
+  </header>
+
+  <!-- CART PAGE -->
+  <main class="cart-page">
+    <section class="cart-items">
+      <h1 class="cart-title">
+        Cart <span id="cart-item-count" class="cart-count"></span>
+      </h1>
+
+      <div id="cart-empty" class="cart-empty hidden">
+        <p>Your cart is currently empty.</p>
+        <button id="cart-empty-shop" class="cart-primary-btn">
+          Browse Products
+        </button>
+      </div>
+
+      <div id="cart-items-container"></div>
+    </section>
+
+    <aside class="cart-summary">
+      <h2>Order Summary</h2>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="summary-subtotal">$0.00</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Shipping &amp; Handling</span>
+        <span>Calculated at checkout</span>
+      </div>
+
+      <div class="summary-row summary-total">
+        <span>Estimated Total</span>
+        <span id="summary-total">$0.00</span>
+      </div>
+
+      <button id="checkout-btn" class="cart-primary-btn full-width">
+        Checkout
+      </button>
+      <button id="continue-shopping-btn" class="cart-secondary-btn full-width">
+        Continue Shopping
+      </button>
+    </aside>
+  </main>
+
+  <script src="/JS/cart.js"></script>
+</body>
+</html>

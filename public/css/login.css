@@ -1,0 +1,208 @@
+/* Layout */
+
+.auth-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  padding: 3rem 7vw;
+  background-color: #f7f7f7;
+  min-height: calc(100vh - 70px); /* minus nav height */
+}
+
+.auth-signin,
+.auth-benefits {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2.5rem 2.75rem;
+  border: 1px solid #e5e5e5;
+}
+
+/* Left side: sign in */
+
+.auth-title {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.75rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.auth-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.auth-label input {
+  border: none;
+  border-bottom: 1px solid #d0d0d0;
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.auth-label input:focus {
+  border-bottom-color: #000;
+}
+
+.auth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.auth-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.auth-checkbox input {
+  width: 14px;
+  height: 14px;
+}
+
+.auth-link {
+  border: none;
+  background: none;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #333;
+}
+
+.auth-submit {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 0;
+  border: 1px solid #111;
+  background-color: #111;
+  color: #fff;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.auth-submit.secondary {
+  background-color: #fff;
+  color: #111;
+}
+
+.auth-submit.secondary:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+.auth-submit:hover {
+  background-color: #333;
+}
+
+.auth-error {
+  margin-top: 0.75rem;
+  color: #b00020;
+  font-size: 0.85rem;
+  min-height: 1.1rem;
+}
+
+.auth-terms {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Right side: benefits */
+
+.auth-benefits {
+  text-align: left;
+}
+
+.benefits-title {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.benefits-subtitle {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.benefits-image-wrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.benefits-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.benefits-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.benefits-list li + li {
+  margin-top: 0.4rem;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem 3rem;
+  }
+}
+.login-mode {
+  display: flex;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.mode-btn.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  opacity: 1;
+}

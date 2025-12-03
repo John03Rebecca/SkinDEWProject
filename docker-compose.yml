@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: estore-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: estore_db
+      MYSQL_USER: estore_user
+      MYSQL_PASSWORD: estore_pass
+    ports:
+      - "3307:3306"   # host:container
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: estore-app
+    restart: always
+    depends_on:
+      - db
+    environment:
+      # match your config/db.js expectations
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: estore_user
+      DB_PASSWORD: estore_pass
+      DB_NAME: estore_db
+      SESSION_SECRET: "super-secret-session-key"
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    # give MySQL a few seconds before starting app (simple but works)
+    command: sh -c "sleep 10 && npm start"
+
+volumes:
+  db_data:

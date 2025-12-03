@@ -1,0 +1,106 @@
+/* Register page layout */
+
+.register-layout {
+  min-height: calc(100vh - 70px); /* minus nav */
+  padding: 3rem 1.5rem 4rem;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2.5rem 3rem 3rem;
+  border: 1px solid #e5e5e5;
+}
+
+.register-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.register-subtitle {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.register-link {
+  color: #111;
+  text-decoration: underline;
+}
+
+/* Form */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.register-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.register-label input {
+  border: none;
+  border-bottom: 1px solid #d0d0d0;
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.register-label input:focus {
+  border-bottom-color: #000;
+}
+
+.register-error {
+  margin-top: 0.5rem;
+  min-height: 1.1rem;
+  font-size: 0.85rem;
+  color: #b00020;
+}
+
+.register-submit {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 0;
+  border: 1px solid #111;
+  background-color: #111;
+  color: #fff;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.register-submit:hover {
+  background-color: #333;
+}
+
+.register-terms {
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .register-card {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+}
