@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkinDEW – Routine Builder</title>
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <a href="/pages/index.html" class="brand">SkinDEW</a>
+      <nav class="top-nav-links">
+        <a href="/pages/index.html" class="top-link">Skincare</a>
+        <a href="/pages/routine.html" class="top-link active">Routine Builder</a>
+        <a href="#" class="top-link">Treatments</a>
+        <a href="/pages/privacy.html" class="top-link">Data & Privacy</a>
+      </nav>
+    </div>
+
+    <div class="top-nav-right">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search in routine..." />
+      </div>
+
+      <button class="profile-btn" id="login-btn">
+        <img src="/images/profile-icon.jpg" class="profile-icon-img">
+        <span>Login</span>
+      </button>
+
+      <button class="profile-icon-only" id="profile-btn" style="display:none;">
+        <img src="/images/profile-icon.jpg" class="profile-icon-img">
+      </button>
+    </div>
+  </header>
+
+  <main class="routine-main">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Build Your SkinDEW Routine</h1>
+        <p>Pick a gentle cleanser, treatment, moisturizer, and sunscreen tailored to your skin goals.</p>
+      </div>
+    </section>
+
+    <!-- Step indicator -->
+    <section class="routine-steps">
+      <div class="step" data-step="1">1. Cleanser</div>
+      <div class="step" data-step="2">2. Treatment</div>
+      <div class="step" data-step="3">3. Moisturizer</div>
+      <div class="step" data-step="4">4. Sunscreen</div>
+    </section>
+
+    <!-- Product list for current step -->
+    <section class="product-grid-section">
+      <h2 id="routine-step-title">Choose a Cleanser</h2>
+      <div id="routine-products" class="product-grid"></div>
+    </section>
+
+    <!-- Summary -->
+    <section class="routine-summary">
+      <h2>Your Routine</h2>
+      <div id="routine-summary-list"></div>
+      <button id="save-routine-btn" class="hero-btn">Save Routine</button>
+      <button id="add-routine-cart-btn" class="hero-btn">Add All to Cart</button>
+    </section>
+  </main>
+
+  <script src="/js/routine.js"></script>
+</body>
+</html>
