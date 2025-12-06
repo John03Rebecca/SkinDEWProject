@@ -9,6 +9,7 @@ This project was built as the final deliverable for an academic course.
 ---
 
 ## Table of Contents
+
 - [Technologies Used](#technologies-used)
 - [Live Demo](#live-demo)
 - [Project Structure](#project-structure)
@@ -25,6 +26,7 @@ This project was built as the final deliverable for an academic course.
 ## Technologies Used
 
 ### Frontend
+
 - HTML  
 - CSS  
 - JavaScript  
@@ -32,6 +34,7 @@ This project was built as the final deliverable for an academic course.
 - Modified Aura template for layout and styling
 
 ### Backend
+
 - Node.js (Express)  
 - MySQL  
 - REST-style API endpoints  
@@ -40,6 +43,7 @@ This project was built as the final deliverable for an academic course.
 - DAO (Data Access Object) pattern for data persistence  
 
 ### Deployment
+
 - Railway (Production)  
 - Local Environment (Development)
 
