@@ -281,7 +281,7 @@ Pushing to the main branch of this repository triggers a redeploy on Railway.
 
 ## Project Report
 
-A 10–15 page project report accompanies this repository. It includes:
+https://github.com/John03Rebecca/SkinDEWProject/blob/e23fb91875f5b20df445dce69e04cd2a31981bb9/Merged-report.pdf
 
 System architecture and MVC design
 Database design and EER diagram
