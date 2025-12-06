@@ -57,6 +57,7 @@ https://skindewproject-production.up.railway.app/
 
 ## Project Structure
 
+```text
 │   .env
 │   .gitignore
 │   docker-compose.yml
@@ -153,7 +154,7 @@ https://skindewproject-production.up.railway.app/
 │
 └───sql
         schema.sql
-
+```
 ---
 
 ## Features
