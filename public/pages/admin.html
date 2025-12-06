@@ -20,16 +20,58 @@
 </header>
 
 <main class="admin-layout">
+  <!-- LEFT: tabs -->
   <aside class="admin-sidebar">
-    <button class="admin-tab active" data-tab="sales">Sales</button>
+    <button class="admin-tab active" data-tab="overview">Overview</button>
+    <button class="admin-tab" data-tab="sales">Sales</button>
     <button class="admin-tab" data-tab="customers">Customers</button>
     <button class="admin-tab" data-tab="inventory">Inventory</button>
   </aside>
 
+  <!-- RIGHT: panels -->
   <section class="admin-main">
 
-    <!-- SALES -->
-    <div class="admin-panel" id="panel-sales">
+    <!-- OVERVIEW PANEL -->
+    <div class="admin-panel" id="panel-overview">
+      <h2>Store Overview</h2>
+
+      <section class="admin-summary">
+        <div class="admin-card">
+          <div class="admin-card-label">Total Revenue</div>
+          <div class="admin-card-value" id="stat-revenue">$0.00</div>
+          <div class="admin-card-note">All-time sales</div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-label">Orders</div>
+          <div class="admin-card-value" id="stat-orders">0</div>
+          <div class="admin-card-note">Completed orders</div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-label">Customers</div>
+          <div class="admin-card-value" id="stat-customers">0</div>
+          <div class="admin-card-note">Unique purchasers</div>
+        </div>
+
+        <div class="admin-card warning">
+          <div class="admin-card-label">Low Inventory</div>
+          <div class="admin-card-value" id="stat-low">0</div>
+          <div class="admin-card-note">Items at ≤ 5 units</div>
+        </div>
+      </section>
+
+      <section class="admin-section">
+        <div class="admin-section-header">
+          <h2>Quick Trends</h2>
+          <span class="admin-section-tag">auto-generated</span>
+        </div>
+        <canvas id="sales-chart" height="120"></canvas>
+      </section>
+    </div>
+
+    <!-- SALES PANEL -->
+    <div class="admin-panel hidden" id="panel-sales">
       <h2>Sales History</h2>
 
       <div class="admin-filters">
@@ -43,7 +85,7 @@
       <div id="sales-detail" class="admin-detail hidden"></div>
     </div>
 
-    <!-- CUSTOMERS -->
+    <!-- CUSTOMERS PANEL -->
     <div class="admin-panel hidden" id="panel-customers">
       <h2>Customers</h2>
 
@@ -97,7 +139,7 @@
       </div>
     </div>
 
-    <!-- INVENTORY -->
+    <!-- INVENTORY PANEL -->
     <div class="admin-panel hidden" id="panel-inventory">
       <h2>Inventory</h2>
 
@@ -105,15 +147,16 @@
         <input id="inv-q" placeholder="Search product name/brand/category..." />
         <button id="inv-refresh" class="hero-btn">Search</button>
       </div>
-      <form id="inv-add-form" class="admin-filters" style="margin-top:8px;">
-  <input id="inv-add-name" placeholder="New product name" required />
-  <input id="inv-add-brand" placeholder="Brand" />
-  <input id="inv-add-category" placeholder="Category" />
-  <input id="inv-add-price" type="number" step="0.01" min="0" placeholder="Price" required />
-  <input id="inv-add-qty" type="number" min="0" placeholder="Qty" required />
-  <button class="hero-btn" type="submit">Add Item</button>
-</form>
 
+      <!-- Add item form (UI only, backend optional) -->
+      <form id="inv-add-form" class="admin-filters" style="margin-top:8px;">
+        <input id="inv-add-name" placeholder="New product name" required />
+        <input id="inv-add-brand" placeholder="Brand" />
+        <input id="inv-add-category" placeholder="Category" />
+        <input id="inv-add-price" type="number" step="0.01" min="0" placeholder="Price" required />
+        <input id="inv-add-qty" type="number" min="0" placeholder="Qty" required />
+        <button class="hero-btn" type="submit">Add Item</button>
+      </form>
 
       <div id="inv-table" class="admin-table"></div>
     </div>
@@ -121,6 +164,8 @@
   </section>
 </main>
 
+<!-- Chart.js for the tiny bar chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/admin.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* Layout */
 .admin-layout {
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -36,7 +37,77 @@
   min-height: 70vh;
 }
 
-.admin-panel.hidden { display: none; }
+.admin-panel.hidden {
+  display: none;
+}
+
+/* Dashboard summary cards */
+.admin-summary {
+  padding: 1.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.admin-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+  padding: 0.9rem 1.1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease;
+}
+.admin-card:hover {
+  transform: translateY(-2px);
+}
+
+.admin-card-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #777;
+  margin-bottom: 0.25rem;
+}
+
+.admin-card-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.admin-card-note {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 0.25rem;
+}
+
+.admin-card.warning {
+  border-color: #f8b4b4;
+  background: #fff7f7;
+}
+
+/* Sections / tables */
+.admin-section {
+  padding: 1.5rem 0 0;
+}
+
+.admin-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.admin-section-header h2 {
+  font-size: 1.2rem;
+}
+
+.admin-section-tag {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: #fff1f0;
+  color: #b3261e;
+}
 
 .admin-filters {
   display: flex;
@@ -52,7 +123,9 @@
   min-width: 220px;
 }
 
-.admin-table, .admin-list, .admin-detail {
+.admin-table,
+.admin-list,
+.admin-detail {
   border: 1px solid #eee;
   border-radius: 12px;
   padding: 12px;
@@ -71,15 +144,27 @@
   margin-bottom: 10px;
   cursor: pointer;
 }
-.admin-list .item:hover { background: #fafafa; }
+.admin-list .item:hover {
+  background: #fafafa;
+}
 
-.muted { opacity: .65; }
+.admin-detail.hidden {
+  display: none;
+}
 
-.admin-detail.hidden { display:none; }
+.muted {
+  opacity: 0.65;
+}
 
-label { display:block; margin: 10px 0; font-weight: 600; }
-label input {
-  display:block;
+/* Form labels inside admin */
+.admin-detail label {
+  display: block;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.admin-detail label input {
+  display: block;
   width: 100%;
   margin-top: 6px;
   padding: 10px 12px;
@@ -88,4 +173,8 @@ label input {
   font-weight: 500;
 }
 
-.row2 { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}

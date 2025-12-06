@@ -64,6 +64,39 @@ const AdminController = {
     });
   },
 
+  /** ---------- GET /api/admin/dashboard/stats ---------- */
+  getStats: async (req, res) => {
+    try {
+      const [[revenue]] = await db.query(
+        `SELECT COALESCE(SUM(total_amount), 0) AS totalRevenue FROM purchase_order`
+      );
+
+      const [[orders]] = await db.query(
+        `SELECT COUNT(*) AS orderCount FROM purchase_order`
+      );
+
+      const [[customers]] = await db.query(
+        `SELECT COUNT(DISTINCT user_id) AS customerCount
+         FROM purchase_order
+         WHERE user_id IS NOT NULL`
+      );
+
+      const [[low]] = await db.query(
+        `SELECT COUNT(*) AS lowCount FROM item WHERE quantity <= 5`
+      );
+
+      res.json({
+        totalRevenue: Number(revenue.totalRevenue || 0),
+        orderCount: Number(orders.orderCount || 0),
+        customerCount: Number(customers.customerCount || 0),
+        lowInventoryCount: Number(low.lowCount || 0),
+      });
+    } catch (err) {
+      console.error('Error fetching admin stats:', err);
+      res.status(500).json({ message: 'Error fetching dashboard stats' });
+    }
+  },
+
   /** ---------- GET /api/admin/sales?userId=&itemId=&from=&to= ---------- */
   getSales: async (req, res) => {
     try {

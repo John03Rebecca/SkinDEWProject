@@ -1,4 +1,93 @@
-// public/JS/index.js
+// public/js/index.js
+
+// ============================================================
+// ACCESSIBILITY & SUSTAINABILITY TAG HELPERS
+// ============================================================
+
+// Optional per-product overrides: update IDs if you feel like it
+// but everything works even if you leave this empty.
+const PRODUCT_TAGS = {
+  // Example:
+  // 1: {
+  //   accessibility: ["fragrance-free", "for sensitive skin"],
+  //   sustainability: ["recyclable packaging"]
+  // }
+};
+
+function getAccessibilityTags(product) {
+  const tags = [];
+  const override = PRODUCT_TAGS[product.id];
+
+  if (override && Array.isArray(override.accessibility)) {
+    tags.push(...override.accessibility);
+  }
+
+  const text = `${product.name || ""} ${product.description || ""}`.toLowerCase();
+
+  // fragrance-free / fragrance free
+  if (text.includes("fragrance-free") || text.includes("fragrance free")) {
+    if (!tags.includes("fragrance-free")) tags.push("fragrance-free");
+  }
+
+  // sensitive skin
+  if (text.includes("sensitive")) {
+    if (!tags.includes("for sensitive skin")) tags.push("for sensitive skin");
+  }
+
+  // gentle
+  if (text.includes("gentle")) {
+    if (!tags.includes("gentle formula")) tags.push("gentle formula");
+  }
+
+  // eczema
+  if (text.includes("eczema")) {
+    if (!tags.includes("eczema-friendly")) tags.push("eczema-friendly");
+  }
+
+  // inclusive / all tones
+  if (
+    text.includes("inclusive") ||
+    text.includes("all skin tones") ||
+    text.includes("all tones")
+  ) {
+    if (!tags.includes("inclusive shades")) tags.push("inclusive shades");
+  }
+
+  return tags;
+}
+
+
+function getSustainabilityTags(product) {
+  const tags = [];
+  const override = PRODUCT_TAGS[product.id];
+
+  if (override && Array.isArray(override.sustainability)) {
+    tags.push(...override.sustainability);
+  }
+
+  const name = (product.name || "").toLowerCase();
+  const brand = (product.brand || "").toLowerCase();
+  const desc = (product.description || "").toLowerCase();
+
+  if (desc.includes("recyclable") || name.includes("recyclable")) {
+    if (!tags.includes("recyclable packaging")) tags.push("recyclable packaging");
+  }
+
+  if (name.includes("refill") || desc.includes("refill")) {
+    if (!tags.includes("refillable")) tags.push("refillable");
+  }
+
+  // Generic "minimal packaging" tag for a few common brands
+  if (brand.includes("ordinary") || brand.includes("cerave") || brand.includes("paula")) {
+    if (!tags.includes("minimal packaging")) tags.push("minimal packaging");
+  }
+
+  return tags;
+}
+
+// ============================================================
+// GLOBAL STATE
+// ============================================================
 
 let allProducts = [];
 let filteredProducts = [];
@@ -14,6 +103,9 @@ async function fetchProducts() {
     if (!res.ok) throw new Error("Failed to fetch catalog");
 
     const data = await res.json();
+
+    // If your backend returns { items: [...] }, switch to:
+    // allProducts = data.items;
     allProducts = data;
     filteredProducts = [...allProducts];
 
@@ -81,7 +173,9 @@ function buildCategoryTabs() {
     const btn = e.target.closest(".category-tab");
     if (!btn) return;
 
-    container.querySelectorAll(".category-tab").forEach((t) => t.classList.remove("active"));
+    container
+      .querySelectorAll(".category-tab")
+      .forEach((t) => t.classList.remove("active"));
     btn.classList.add("active");
 
     currentTabCategory = btn.dataset.category;
@@ -99,7 +193,15 @@ function applyFiltersAndSort() {
   const brand = document.getElementById("filter-brand").value;
   const categoryDropdown = document.getElementById("filter-category").value;
   const sortValue = document.getElementById("sort-by").value;
-  const search = document.getElementById("search-input").value.toLowerCase().trim();
+  const search = document
+    .getElementById("search-input")
+    .value.toLowerCase()
+    .trim();
+
+  const fragranceFreeOnly =
+    document.getElementById("filter-fragrance-free")?.checked || false;
+  const sustainableOnly =
+    document.getElementById("filter-sustainable")?.checked || false;
 
   const category = categoryDropdown || currentTabCategory;
 
@@ -114,14 +216,24 @@ function applyFiltersAndSort() {
       if (!combined.includes(search)) ok = false;
     }
 
+    const accessTags = getAccessibilityTags(p);
+    const susTags = getSustainabilityTags(p);
+
+    if (fragranceFreeOnly && !accessTags.includes("fragrance-free")) ok = false;
+    if (sustainableOnly && susTags.length === 0) ok = false;
+
     return ok;
   });
 
   // Sorting
-  if (sortValue === "price-asc") filteredProducts.sort((a, b) => a.price - b.price);
-  if (sortValue === "price-desc") filteredProducts.sort((a, b) => b.price - a.price);
-  if (sortValue === "name-asc") filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-  if (sortValue === "name-desc") filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+  if (sortValue === "price-asc")
+    filteredProducts.sort((a, b) => a.price - b.price);
+  if (sortValue === "price-desc")
+    filteredProducts.sort((a, b) => b.price - a.price);
+  if (sortValue === "name-asc")
+    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+  if (sortValue === "name-desc")
+    filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
 
   updateResultsCount();
   renderProducts();
@@ -145,28 +257,38 @@ function renderProducts() {
   grid.innerHTML = "";
 
   filteredProducts.forEach((p) => {
+    const accessTags = getAccessibilityTags(p);
+    const susTags = getSustainabilityTags(p);
+    const allTags = [...accessTags, ...susTags];
+
+    const tagHtml = allTags.length
+      ? `<div class="product-tags">
+           ${allTags.map((t) => `<span class="tag-pill">${t}</span>`).join("")}
+         </div>`
+      : "";
+
     const card = document.createElement("div");
     card.className = "product-card";
-      card.innerHTML = `
-  <a class="product-click" href="/pages/product.html?id=${p.id}">
-    <div class="product-image-wrapper">
-      <img src="${p.image_url}" alt="${p.name}">
-    </div>
-  </a>
+    card.innerHTML = `
+      <a class="product-click" href="/pages/product.html?id=${p.id}">
+        <div class="product-image-wrapper">
+          <img src="${p.image_url}" alt="${p.name}">
+        </div>
+      </a>
 
-  <a class="product-click" href="/pages/product.html?id=${p.id}">
-    <div class="product-name">${p.name}</div>
-  </a>
+      <a class="product-click" href="/pages/product.html?id=${p.id}">
+        <div class="product-name">${p.name}</div>
+      </a>
 
-  <div class="product-brand">${p.brand}</div>
+      <div class="product-brand">${p.brand}</div>
 
-  <div class="product-footer">
-    <div class="product-price">$${Number(p.price).toFixed(2)}</div>
-    <button class="add-btn" data-id="${p.id}">Add to Cart</button>
-  </div>
-`;
+      ${tagHtml}
 
-    
+      <div class="product-footer">
+        <div class="product-price">$${Number(p.price).toFixed(2)}</div>
+        <button class="add-btn" data-id="${p.id}">Add to Cart</button>
+      </div>
+    `;
 
     grid.appendChild(card);
   });
@@ -191,11 +313,12 @@ function attachAddToCartHandlers() {
         });
 
         if (res.status === 401) {
-  // ✅ allow browsing + cart without login
-  // If backend still blocks, we just show message and don't redirect
-  alert("Guest cart is not enabled on backend yet. Enable session cart to add items without login.");
-  return;
-}
+          // allow browsing + cart without login
+          alert(
+            "Please log in to add items to your cart."
+          );
+          return;
+        }
 
         if (!res.ok) {
           alert("Failed to add to cart.");
@@ -241,11 +364,23 @@ async function checkAuthStatus() {
 // ============================================================
 
 function wireEvents() {
-  document.getElementById("filter-brand").addEventListener("change", applyFiltersAndSort);
-  document.getElementById("filter-category").addEventListener("change", applyFiltersAndSort);
-  document.getElementById("sort-by").addEventListener("change", applyFiltersAndSort);
+  document
+    .getElementById("filter-brand")
+    .addEventListener("change", applyFiltersAndSort);
+  document
+    .getElementById("filter-category")
+    .addEventListener("change", applyFiltersAndSort);
+  document
+    .getElementById("sort-by")
+    .addEventListener("change", applyFiltersAndSort);
 
-  // ✅ NEW: search behavior
+  const ff = document.getElementById("filter-fragrance-free");
+  if (ff) ff.addEventListener("change", applyFiltersAndSort);
+
+  const sus = document.getElementById("filter-sustainable");
+  if (sus) sus.addEventListener("change", applyFiltersAndSort);
+
+  // search behavior
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
     // Live search as user types
@@ -253,7 +388,7 @@ function wireEvents() {
       applyFiltersAndSort();
     });
 
-    // Also handle pressing Enter so the page doesn't reload
+    // Handle pressing Enter so the page doesn't reload
     searchInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         e.preventDefault();
@@ -262,21 +397,29 @@ function wireEvents() {
     });
   }
 
-  document.getElementById("hero-shop-btn").addEventListener("click", () => {
-    document
-      .querySelector(".product-grid-section")
-      .scrollIntoView({ behavior: "smooth" });
-  });
+  const heroBtn = document.getElementById("hero-shop-btn");
+  if (heroBtn) {
+    heroBtn.addEventListener("click", () => {
+      document
+        .querySelector(".product-grid-section")
+        .scrollIntoView({ behavior: "smooth" });
+    });
+  }
 
-  document.getElementById("login-btn").addEventListener("click", () => {
-    window.location.href = "/pages/login.html";
-  });
+  const loginBtn = document.getElementById("login-btn");
+  if (loginBtn) {
+    loginBtn.addEventListener("click", () => {
+      window.location.href = "/pages/login.html";
+    });
+  }
 
-  document.getElementById("profile-btn").addEventListener("click", () => {
-    window.location.href = "/pages/profile.html";
-  });
+  const profileBtn = document.getElementById("profile-btn");
+  if (profileBtn) {
+    profileBtn.addEventListener("click", () => {
+      window.location.href = "/pages/profile.html";
+    });
+  }
 }
-
 
 // ============================================================
 // INIT

@@ -5,7 +5,6 @@
   <title>SkinDEW – Skincare Store</title>
   <link rel="stylesheet" href="/css/index.css" />
   <link rel="stylesheet" href="/css/cart.css" />
-
 </head>
 <body>
   <!-- Top Navigation -->
@@ -13,47 +12,48 @@
     <div class="top-nav-left">
       <a href="/pages/index.html" class="brand">SkinDEW</a>
       <nav class="top-nav-links">
-        <nav class="top-nav-links">
-  <a href="/pages/index.html" class="top-link active">Skincare</a>
-  <a href="/pages/routine.html" class="top-link">Routine Builder</a>
-  <a href="/pages/privacy.html" class="top-link">Data and Privacy</a>
-</nav>
-
+        <a href="/pages/index.html" class="top-link active">Skincare</a>
+        <a href="/pages/routine.html" class="top-link">Routine Builder</a>
+        <a href="/pages/privacy.html" class="top-link">Data and Privacy</a>
       </nav>
     </div>
 
     <div class="top-nav-right">
       <div class="search-box">
-        <input type="text" id="search-input" placeholder="Search products..." />
+        <input type="text" id="search-input" placeholder="Search accessible, low-waste skincare..." />
       </div>
 
-     <!-- visible when NOT logged in -->
-<button class="profile-btn" id="login-btn">
-  <img src="/images/profile-icon.jpg" class="profile-icon-img">
-  <span>Login</span>
-</button>
+      <!-- visible when NOT logged in -->
+      <button class="profile-btn" id="login-btn">
+        <img src="/images/profile-icon.jpg" class="profile-icon-img" alt="">
+        <span>Login</span>
+      </button>
 
-<!-- visible when logged IN -->
-<button class="profile-icon-only" id="profile-btn" style="display:none;">
-  <img src="/images/profile-icon.jpg" class="profile-icon-img">
-</button>
-
+      <!-- visible when logged IN -->
+      <button
+        class="profile-icon-only"
+        id="profile-btn"
+        style="display:none;"
+        aria-label="Open profile page"
+      >
+        <img src="/images/profile-icon.jpg" class="profile-icon-img" alt="">
+      </button>
     </div>
   </header>
 
   <!-- Hero banner -->
   <section class="hero">
     <div class="hero-text">
-      <h1>Dewy, Healthy Skin Starts Here</h1>
+      <h1>Accessible, Low-Waste Skincare</h1>
       <p>
-        Curated skincare essentials from trusted brands like The Ordinary, Paula's Choice,
-        CeraVe, and more.
+        Curated essentials focused on fragrance-free formulas, sensitive-skin friendly routines,
+        and more sustainable packaging from trusted brands.
       </p>
-      <button class="hero-btn" id="hero-shop-btn">Shop Skincare</button>
+      <button class="hero-btn" id="hero-shop-btn">Shop Accessible Picks</button>
     </div>
 
     <div class="hero-image">
-      <img src="/images/hero-banner.jpg" class="hero-image-real" alt="SkinDEW Banner">
+      <img src="/images/hero-banner.jpg" class="hero-image-real" alt="SkinDEW accessibility and sustainability banner">
     </div>
   </section>
 
@@ -98,6 +98,17 @@
           <option value="name-desc">Name: Z–A</option>
         </select>
       </label>
+
+      <div class="extra-filters">
+        <label>
+          <input type="checkbox" id="filter-fragrance-free">
+          Fragrance-free only
+        </label>
+        <label>
+          <input type="checkbox" id="filter-sustainable">
+          Sustainable packaging
+        </label>
+      </div>
     </div>
   </section>
 
@@ -107,25 +118,25 @@
       <!-- js renders cards here -->
     </div>
   </main>
+
   <!-- MINI CART POPUP -->
-<div id="mini-cart-overlay" class="mini-cart-overlay hidden"></div>
+  <div id="mini-cart-overlay" class="mini-cart-overlay hidden"></div>
 
-<div id="mini-cart" class="mini-cart hidden">
-  <div class="mini-cart-header">
-    <h2>Item Added to Cart</h2>
-    <button id="mini-cart-close">×</button>
+  <div id="mini-cart" class="mini-cart hidden">
+    <div class="mini-cart-header">
+      <h2>Item Added to Cart</h2>
+      <button id="mini-cart-close">×</button>
+    </div>
+
+    <div id="mini-cart-items" class="mini-cart-items">
+      <!-- js fills the items -->
+    </div>
+
+    <div class="mini-cart-footer">
+      <button id="mini-cart-view" class="mini-cart-btn primary">View Cart</button>
+      <button id="mini-cart-continue" class="mini-cart-btn">Continue Shopping</button>
+    </div>
   </div>
-
-  <div id="mini-cart-items" class="mini-cart-items">
-    <!-- js fills the items -->
-  </div>
-
-  <div class="mini-cart-footer">
-    <button id="mini-cart-view" class="mini-cart-btn primary">View Cart</button>
-    <button id="mini-cart-continue" class="mini-cart-btn">Continue Shopping</button>
-  </div>
-</div>
-
 
   <script src="/js/index.js"></script>
 </body>

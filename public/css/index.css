@@ -100,6 +100,7 @@ body {
   height: 18px;
   object-fit: contain;
 }
+
 .profile-icon-only {
   border: none;
   background: none;
@@ -161,10 +162,6 @@ body {
   object-fit: cover;
   border-radius: 20px;
 }
-
-/* (not used anymore, but harmless if left)
-.hero-image-placeholder { ... }
-*/
 
 /* Category tabs + results */
 
@@ -238,6 +235,28 @@ body {
   font-size: 0.85rem;
 }
 
+/* Extra accessibility/sustainability filters */
+
+.extra-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 1rem;
+}
+
+.extra-filters label {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+.extra-filters input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+
 /* Product grid */
 
 .product-grid-section {
@@ -292,6 +311,25 @@ body {
   color: #666;
 }
 
+/* Accessibility & sustainability tags */
+
+.product-tags {
+  margin: 0.3rem 0 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag-pill {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #244;
+  border: 1px solid #d4e4ff;
+  white-space: nowrap;
+}
+
 .product-price {
   font-size: 0.9rem;
   font-weight: 600;
@@ -337,7 +375,12 @@ body {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
+
+  .extra-filters {
+    margin-left: 0;
+  }
 }
+
 /* ============================
    ROUTINE BUILDER LAYOUT
    ============================ */
