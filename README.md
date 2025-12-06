@@ -4,7 +4,7 @@ SkinDew is a full-stack skincare eCommerce platform focused on **sustainably pac
 Customers can browse a curated catalogue, filter and search items, manage a shopping cart, and place orders.  
 Administrators can review sales history, manage customer accounts, and adjust inventory levels.
 
-This project was built as the final deliverable for an academic course.
+Video Demo: https://github.com/John03Rebecca/SkinDEWProject/blob/8f1d33401863f05b905a2d0fde4e3c4956419f0f/Video-demo.mp4
 
 ---
 
