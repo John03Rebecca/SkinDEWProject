@@ -12,7 +12,7 @@ RUN npm install --production
 COPY . .
 
 # App listens on 3000
-EXPOSE 3000
+EXPOSE 8080
 
 # Use env vars for DB + session secret
 ENV NODE_ENV=production
