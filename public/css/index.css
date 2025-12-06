@@ -338,3 +338,94 @@ body {
     padding-right: 1.25rem;
   }
 }
+/* ============================
+   ROUTINE BUILDER LAYOUT
+   ============================ */
+
+.routine-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 5vw 4rem;
+}
+
+/* Step pills */
+.routine-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.routine-steps .step {
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid #d0d0d0;
+  background: #f7f7f7;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.routine-steps .step:hover {
+  background: #ececec;
+}
+
+.routine-steps .step.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* Step title */
+#routine-step-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Summary card */
+.routine-summary {
+  margin-top: 3rem;
+  padding: 1.5rem 1.75rem 1.75rem;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+}
+
+.routine-summary h2 {
+  margin-bottom: 1rem;
+}
+
+.routine-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.routine-summary-row strong {
+  font-weight: 600;
+}
+
+/* Buttons in summary */
+.routine-summary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+/* Reuse hero-btn but add a softer secondary style */
+.secondary-btn {
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+.secondary-btn:hover {
+  background: #f2f2f2;
+}
