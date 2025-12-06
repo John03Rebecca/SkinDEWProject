@@ -10,12 +10,9 @@
     <div class="top-nav-left">
       <a href="/pages/index.html" class="brand">SkinDEW</a>
       <nav class="top-nav-links">
-       <nav class="top-nav-links">
-  <a href="/pages/index.html" class="top-link active">Skincare</a>
-  <a href="/pages/routine.html" class="top-link">Routine Builder</a>
-  <a href="/pages/privacy.html" class="top-link">Data &amp; Privacy</a>
-</nav>
-
+        <a href="/pages/index.html" class="top-link">Skincare</a>
+        <a href="/pages/routine.html" class="top-link active">Routine Builder</a>
+        <a href="/pages/privacy.html" class="top-link">Data &amp; Privacy</a>
       </nav>
     </div>
 
@@ -43,12 +40,12 @@
       </div>
     </section>
 
-    <!-- Step indicator -->
+    <!-- Step pills -->
     <section class="routine-steps">
-      <div class="step" data-step="1">1. Cleanser</div>
-      <div class="step" data-step="2">2. Treatment</div>
-      <div class="step" data-step="3">3. Moisturizer</div>
-      <div class="step" data-step="4">4. Sunscreen</div>
+      <div class="step" data-step="1">Cleanser</div>
+      <div class="step" data-step="2">Treatment</div>
+      <div class="step" data-step="3">Moisturizer</div>
+      <div class="step" data-step="4">Sunscreen</div>
     </section>
 
     <!-- Product list for current step -->
@@ -57,12 +54,16 @@
       <div id="routine-products" class="product-grid"></div>
     </section>
 
-    <!-- Summary -->
+    <!-- Summary card -->
     <section class="routine-summary">
       <h2>Your Routine</h2>
       <div id="routine-summary-list"></div>
-      <button id="save-routine-btn" class="hero-btn">Save Routine</button>
-      <button id="add-routine-cart-btn" class="hero-btn">Add All to Cart</button>
+      <div class="routine-summary-actions">
+        <button id="save-routine-btn" class="hero-btn">Save Routine</button>
+        <button id="add-routine-cart-btn" class="hero-btn secondary-btn">
+          Add All to Cart
+        </button>
+      </div>
     </section>
   </main>
 
