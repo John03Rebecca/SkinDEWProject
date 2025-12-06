@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkinDEW – Data & Privacy</title>
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <a href="/pages/index.html" class="brand">SkinDEW</a>
+      <nav class="top-nav-links">
+        <a href="/pages/index.html" class="top-link">Skincare</a>
+        <a href="/pages/routine.html" class="top-link">Routine Builder</a>
+        <a href="#" class="top-link">Treatments</a>
+        <a href="/pages/privacy.html" class="top-link active">Data & Privacy</a>
+      </nav>
+    </div>
+
+    <div class="top-nav-right">
+      <!-- you can reuse login/profile buttons here too -->
+    </div>
+  </header>
+
+  <main class="privacy-main">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Your Skin, Your Data</h1>
+        <p>
+          SkinDEW keeps your skincare preferences lightweight and transparent.
+          We do not store any genetic data or medical information.
+        </p>
+      </div>
+    </section>
+
+    <section class="privacy-content">
+      <h2>What We Store</h2>
+      <ul>
+        <li>Basic account details (email, name, shipping address).</li>
+        <li>Your order history so you can re-order favourites.</li>
+        <li>Optional routine selections saved in <strong>your browser</strong> only.</li>
+      </ul>
+
+      <h2>What We Never Store</h2>
+      <ul>
+        <li>No DNA or genetic test results.</li>
+        <li>No detailed medical records.</li>
+        <li>No payment card numbers on our servers.</li>
+      </ul>
+
+      <h2>Your Controls</h2>
+      <p>You can clear your saved routine/profile from this browser at any time:</p>
+      <button id="clear-local-data-btn" class="hero-btn">
+        Delete My Saved Routine From This Browser
+      </button>
+
+      <p class="small-note">
+        This only clears locally saved data (like your routine). To delete your full account,
+        please contact support or use the account settings page.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("clear-local-data-btn").addEventListener("click", () => {
+      localStorage.removeItem("skinDewRoutine");
+      alert("Your saved routine has been deleted from this browser.");
+    });
+  </script>
+</body>
+</html>
