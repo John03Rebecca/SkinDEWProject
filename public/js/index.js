@@ -244,6 +244,23 @@ function wireEvents() {
   document.getElementById("filter-brand").addEventListener("change", applyFiltersAndSort);
   document.getElementById("filter-category").addEventListener("change", applyFiltersAndSort);
   document.getElementById("sort-by").addEventListener("change", applyFiltersAndSort);
+   //  NEW: search hooks
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    // live search as user types
+    searchInput.addEventListener("input", () => {
+      applyFiltersAndSort();
+    });
+  }
+
+  const searchForm = document.getElementById("search-form");
+  if (searchForm) {
+    // prevent full page reload on Enter
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      applyFiltersAndSort();
+    });
+  }
 
   document.getElementById("hero-shop-btn").addEventListener("click", () => {
     document.querySelector(".product-grid-section").scrollIntoView({ behavior: "smooth" });
