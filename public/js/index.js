@@ -244,26 +244,28 @@ function wireEvents() {
   document.getElementById("filter-brand").addEventListener("change", applyFiltersAndSort);
   document.getElementById("filter-category").addEventListener("change", applyFiltersAndSort);
   document.getElementById("sort-by").addEventListener("change", applyFiltersAndSort);
-   //  NEW: search hooks
+
+  // ✅ NEW: search behavior
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
-    // live search as user types
+    // Live search as user types
     searchInput.addEventListener("input", () => {
       applyFiltersAndSort();
     });
-  }
 
-  const searchForm = document.getElementById("search-form");
-  if (searchForm) {
-    // prevent full page reload on Enter
-    searchForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      applyFiltersAndSort();
+    // Also handle pressing Enter so the page doesn't reload
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        applyFiltersAndSort();
+      }
     });
   }
 
   document.getElementById("hero-shop-btn").addEventListener("click", () => {
-    document.querySelector(".product-grid-section").scrollIntoView({ behavior: "smooth" });
+    document
+      .querySelector(".product-grid-section")
+      .scrollIntoView({ behavior: "smooth" });
   });
 
   document.getElementById("login-btn").addEventListener("click", () => {
@@ -274,6 +276,7 @@ function wireEvents() {
     window.location.href = "/pages/profile.html";
   });
 }
+
 
 // ============================================================
 // INIT
