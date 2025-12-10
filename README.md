@@ -52,7 +52,7 @@ Video Demo: https://github.com/John03Rebecca/SkinDEWProject/blob/8f1d33401863f05
 ## Live Demo
 
 https://skindewproject-production.up.railway.app/
-
+[for admin dashboard: Email: test@example.com; Password: password123]
 ---
 
 ## Project Structure
