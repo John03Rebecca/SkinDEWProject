@@ -48,11 +48,11 @@ Video Demo: https://github.com/John03Rebecca/SkinDEWProject/blob/8f1d33401863f05
 - Local Environment (Development)
 
 ---
-
+text[for admin dashboard: Email: test@example.com; Password: password123]
 ## Live Demo
 
 https://skindewproject-production.up.railway.app/
-```text[for admin dashboard: Email: test@example.com; Password: password123]```
+
 ---
 
 ## Project Structure
