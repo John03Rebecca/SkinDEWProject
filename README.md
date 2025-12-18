@@ -53,6 +53,28 @@ test[for admin dashboard: Email: test@example.com; Password: password123]
 
 https://skindewproject-production.up.railway.app/
 
+### How to Download the Source Code
+
+Option 1: Using Git
+git clone https://github.com/John03Rebecca/SkinDEWProject.git
+
+Option 2: Download ZIP
+Go to the GitHub repository → Code → Download ZIP
+Extract the files locally.
+
+### Docker (Optional – Local Development)
+
+Docker files are included for local development convenience.
+The production deployment is handled via the Railway.
+
+To run using Docker:
+
+docker-compose up --build
+
+The application will be available at:
+http://localhost:8080
+
+
 ---
 
 ## Project Structure
