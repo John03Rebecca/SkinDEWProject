@@ -30,7 +30,6 @@ Video Demo: https://github.com/John03Rebecca/SkinDEWProject/blob/8f1d33401863f05
 - HTML  
 - CSS  
 - JavaScript  
-- Bootstrap 5  
 - Modified Aura template for layout and styling
 
 ### Backend
@@ -48,34 +47,10 @@ Video Demo: https://github.com/John03Rebecca/SkinDEWProject/blob/8f1d33401863f05
 - Local Environment (Development)
 
 ---
-test[for admin dashboard: Email: test@example.com; Password: password123]
+test[for admin dashboard: Email: test@example.com; Password: password123; https://skindewproject-production.up.railway.app/pages/login.html]
 ## Live Demo
 
 https://skindewproject-production.up.railway.app/
-
-### How to Download the Source Code
-
-Option 1: Using Git
-git clone https://github.com/John03Rebecca/SkinDEWProject.git
-
-Option 2: Download ZIP
-Go to the GitHub repository → Code → Download ZIP
-Extract the files locally.
-
-### Docker (Optional – Local Development)
-
-Docker files are included for local development convenience.
-The production deployment is handled via the Railway.
-
-To run using Docker:
-
-docker-compose up --build
-
-The application will be available at:
-http://localhost:8080
-
-
----
 
 ## Project Structure
 
@@ -235,7 +210,7 @@ Update customer information such as shipping address and basic profile fields
 Inventory Management
 View inventory of all products
 Increase or decrease product quantities as needed
-Ensure that only products that meet sustainable packaging criteria remain listed in the catalogue (handled by content / data curation)
+Ensure that only products that meet sustainable packaging criteria remain listed in the catalogue (handled by content/data curation)
 
 ---
 
@@ -255,37 +230,87 @@ All database operations are routed through DAO classes to keep controllers decou
 The full schema is defined in sql/schema.sql (and dump_clean.sql for data).
 
 ---
-
 ## Running the Project Locally
 
-1. Clone the repository
-git clone https://github.com/YourUsername/skinDew.git
-cd skinDew
+### Prerequisites
+Make sure the following are installed:
+- Node.js (LTS)
+- MySQL Server
+- Git
+- Terminal (Command Prompt / PowerShell / Terminal)
 
-2. Install dependencies
+Verify installations:
+```bash
+node -v
+npm -v
+git --version
+mysql --version
+2. Install Dependencies
 npm install
 
-3. Set up the database
 
-Create a MySQL database (for example, railway or skindew).
+If issues occur:
+rm -rf node_modules package-lock.json
+npm install
 
-Import the schema:
 
-mysql -u your_user -p your_database < sql/schema.sql
-# or use dump_clean.sql if you want sample data
+Windows (PowerShell):
 
-Configure your .env file with the correct MySQL connection string/variables
-(matching what config/db.js expects).
+Remove-Item -Recurse -Force node_modules
+Remove-Item -Force package-lock.json
+npm install
 
-4. Start the server
+3. Set Up the MySQL Database
+3.1 Create the Database
+mysql -u root -p
+CREATE DATABASE skindew;
+USE skindew;
+exit;
+
+3.2 Import the Schema
+mysql -u root -p skindew < sql/schema.sql
+
+3.3 (Optional) Load Sample Data
+mysql -u root -p skindew < dump_clean.sql
+
+4. Configure Environment Variables
+
+Create a .env file in the project root:
+PORT=8080
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=skindew
+SESSION_SECRET=someRandomSecretString123
+Variable names must match those expected in config/db.js.
+
+5. Startup Order
+Ensure MySQL server is running
+Start the Node.js server
+Access the application via browser
+
+6. Start the Server
 npm run dev
-# or
+or
 node server.js
 
-5. Visit the app
+7. Access the Application
 http://localhost:8080
+(Use the port specified in .env if different.)
 
-(Use whatever port is configured in server.js or via PORT in your .env.)
+8. Admin Login
+Email: test@example.com
+Password: password123
+
+Admin dashboard: http://localhost:8080/pages/admin.html
+
+9. Troubleshooting
+
+Database access error → Check DB credentials in .env
+Unknown database → Ensure DB exists and name matches
+Cannot connect to MySQL → Confirm MySQL server is running
+Port already in use → Change PORT in .env
+```
 
 ---
 
