@@ -17,7 +17,7 @@ Video Demo: https://github.com/John03Rebecca/SkinDEWProject/blob/8f1d33401863f05
   - [User Features](#user-features)
   - [Admin Features](#admin-features)
 - [Database Design](#database-design)
-- [Running the Project Locally](#running-the-project-locally)
+- [Running the Project Locally](#running-the-project-locally-from-scratch)
 - [Deployment on Railway](#deployment-on-railway)
 - [Project Report](#project-report)
 
