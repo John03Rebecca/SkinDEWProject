@@ -1,0 +1,47 @@
+# ============================================================
+# Local Docker Compose Configuration (LOCAL DEVELOPMENT ONLY)
+#
+# This file is used to run the project locally using Docker.
+# It does NOT affect Railway deployments.
+#
+# Railway uses its own managed database and environment variables
+# and does NOT execute this file or schema.sql automatically.
+# ============================================================
+
+services:
+
+  mysql:
+    image: mysql:8                      # Official MySQL 8 image
+    container_name: skindew-mysql       # Explicit container name for clarity
+    restart: always                     # Restart container if it crashes
+
+    environment:
+      MYSQL_ROOT_PASSWORD: password     # Root password (LOCAL ONLY)
+      MYSQL_DATABASE: estore_db         # Database created on startup
+
+    volumes:
+      # Persist database data between container restarts
+      - mysql_data:/var/lib/mysql
+
+      # Automatically run schema.sql on FIRST container startup
+      # This creates tables and seeds data for local development
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+  app:
+    build: .                            # Build from Dockerfile in project root
+    container_name: skindew-app         # Explicit container name
+    restart: always
+
+    ports:
+      - "3000:3000"                    # Expose app on localhost:3000
+
+    environment:
+      # Database connection string for LOCAL MySQL container
+      # This overrides any .env file and is NOT used by Railway
+      MYSQL_URL: mysql://root:password@mysql:3306/estore_db
+
+    depends_on:
+      - mysql                           # Ensure DB starts before app
+
+volumes:
+  # Persistent MySQL storage (LOCAL ONLY)
+  mysql_data:
