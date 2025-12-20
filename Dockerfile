@@ -8,7 +8,7 @@ COPY package*.json ./
 RUN npm install --production
 COPY . .
 
-EXPOSE 8080
+EXPOSE 3000
 
 ENV NODE_ENV=production
 CMD ["npm", "start"]
